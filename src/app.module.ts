@@ -1,12 +1,27 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { UserModule } from './user/user.module';
-import { BookmarkModule } from './bookmark/bookmark.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from './user/entity/user.entity';
+import { AuthController } from './auth/auth.controller';
+import { AuthModule } from './auth/auth.module';
+
 
 
 @Module({
-  imports: [UserModule, BookmarkModule],
-  controllers:[AppController]
+  imports: [UserModule, 
+    TypeOrmModule.forRoot({
+    type: 'mysql',
+    host: '127.0.0.1',
+    port: 3306,
+    username: 'root',
+    password: 'Asit@123',
+    database: 'nestjs',
+    entities: [User],
+    synchronize: true,
+  }), AuthModule,],
+
+  controllers:[AppController, AuthController]
  
 })
 export class AppModule {}
