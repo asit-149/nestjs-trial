@@ -12,12 +12,12 @@ import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [UserModule, 
     TypeOrmModule.forRoot({
-    type: 'mysql',
-    host: '127.0.0.1',
-    port: 3306,
-    username: 'root',
+    type: 'postgres',
+    host: 'localhost',
+    port: 5432,
+    username: 'postgres',
     password: 'Asit@123',
-    database: 'nestjs',
+    database: 'api',
     entities: [User],
     synchronize: true,
   }), AuthModule, ],
