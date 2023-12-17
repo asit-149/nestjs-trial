@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user/entity/user.entity';
 import { AuthController } from './auth/auth.controller';
 import { AuthModule } from './auth/auth.module';
+// import { ProfileModule } from './profile/profile.module';
 
 
 
@@ -19,9 +20,9 @@ import { AuthModule } from './auth/auth.module';
     database: 'nestjs',
     entities: [User],
     synchronize: true,
-  }), AuthModule,],
+  }), AuthModule, ],
 
-  controllers:[AppController, AuthController]
+  controllers:[AppController, ]
  
 })
 export class AppModule {}
